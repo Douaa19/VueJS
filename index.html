@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>T9EDIA APP</title>
+</head>
+<body>
+    <!-- push()
+    splice()
+    @keyup.enter -->
+
+    <div id="app">
+        <div class="todo-header">
+            <form action="">
+                <input type="text" id="tasks" placeholder="New task" v-model="inputVal">
+                <button @click.prevent="addTask()">Add</button>
+            </form>
+        </div>
+        <div v-for="(task, index) in tasks" class="todo-body">
+            <p> {{ task.tasks }} </p>
+            <button >Delete</button>
+        </div>
+        <div class="todo-footer">
+            <button @click="deleteAll()">Delete All</button>
+        </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+       new Vue({
+           el: '#app',
+           data: {
+                tasks: [],
+                inputVal: '',
+           },
+           methods: {
+                addTask: function () {
+                    if (this.inputVal.trim().length != 0) {
+                        this.tasks.push({
+                            tasks: this.inputVal
+                        });
+                        this.inputVal = '';
+                        return this.tasks;
+                    }
+                },
+                deleteAll: function () {
+                    return this.tasks= [];
+                }
+           }
+       })
+    </script>
+</body>
+</html>
